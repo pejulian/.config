@@ -3,6 +3,18 @@ vim.cmd("let g:netrw_liststyle = 3") -- make the default file explorer in nvim u
 local opt = vim.opt
 local api = vim.api
 
+-- basic
+opt.shell = "zsh"
+opt.title = true -- show title of file in window
+opt.titlelen = 0 -- do not shorten title
+opt.cmdheight = 1
+opt.showcmd = true
+opt.scrolloff = 10 -- use :h scrolloff to understand this more
+
+-- encodings
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
+
 -- Triger `autoread` when files changes on disk
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 -- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
@@ -50,3 +62,6 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 -- split windows
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
+
+-- code folding
+opt.foldmethod = "indent"
