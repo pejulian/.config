@@ -1,7 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "windwp/nvim-ts-autotag",
     "nvim-treesitter/nvim-treesitter-textobjects",
@@ -12,6 +12,7 @@ return {
 
     -- configure treesitter
     treesitter.setup({ -- enable syntax highlighting
+      -- get better highlighting
       highlight = {
         enable = true,
       },
@@ -28,8 +29,10 @@ return {
         "javascript",
         "typescript",
         "tsx",
+        "xml",
         "yaml",
         "jq",
+        "properties",
         "html",
         "css",
         "prisma",
