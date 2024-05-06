@@ -1,2 +1,2 @@
-require("ln0.core")
-require("ln0.lazy")
+require("pejulian.core")
+require("pejulian.lazy")

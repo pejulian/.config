@@ -50,7 +50,7 @@ return {
     local wk = require("which-key")
     wk.register({
       e = {
-        name = "nvim-tree",
+        name = "Tree (nvim-tree)",
         e = { "<cmd>NvimTreeToggle<CR>", "Toggle file explorer" },
         f = { "<cmd>NvimTreeFindFileToggle<CR>", "Toggle file explorer on current file" },
         c = { "<cmd>NvimTreeCollapse<CR>", "Collapse file explorer" },

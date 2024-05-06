@@ -17,6 +17,6 @@ require("lazy").setup({ { import = "pejulian.plugins" }, { import = "pejulian.pl
     notify = false,
   },
   change_detection = {
-    notify = false
-  }
+    notify = false,
+  },
 })

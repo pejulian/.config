@@ -59,6 +59,35 @@ opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or 
 -- clipboard
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
+-- check if we are in windows
+vim.cmd([[
+  if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+      let g:os = "Windows"
+    else
+      let g:os = substitute(system("uname"), "\n", "", "")
+    endif
+  endif
+]])
+
+-- if in Windows is running, set clipboard to use win32yank
+if vim.api.nvim_eval('has("gui_running")') then
+  if vim.g.os == "Windows" then
+    vim.g.clipboard = {
+      name = "win32yank-wsl",
+      copy = {
+        ["+"] = "win32yank.exe -i --crlf",
+        ["*"] = "win32yank.exe -i --crlf",
+      },
+      paste = {
+        ["+"] = "win32yank.exe -o --lf",
+        ["*"] = "win32yank.exe -o --lf",
+      },
+      cache_enabled = 0,
+    }
+  end
+end
+
 -- split windows
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
