@@ -10,6 +10,7 @@ opt.titlelen = 0 -- do not shorten title
 opt.cmdheight = 1
 opt.showcmd = true
 opt.scrolloff = 10 -- use :h scrolloff to understand this more
+opt.sidescrolloff = 5 -- use :h sidescrolloff to understand this more
 
 -- encodings
 opt.encoding = "utf-8"
@@ -18,9 +19,10 @@ opt.fileencoding = "utf-8"
 -- Triger `autoread` when files changes on disk
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 -- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+opt.autoread = true
 api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  command = "if mode() != 'c' | checktime | endif",
   pattern = "*",
-  command = "if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif",
 })
 
 -- Notification after file change
@@ -71,22 +73,24 @@ vim.cmd([[
 ]])
 
 -- if in Windows is running, set clipboard to use win32yank
-if vim.api.nvim_eval('has("gui_running")') then
-  if vim.g.os == "Windows" then
-    vim.g.clipboard = {
-      name = "win32yank-wsl",
-      copy = {
-        ["+"] = "win32yank.exe -i --crlf",
-        ["*"] = "win32yank.exe -i --crlf",
-      },
-      paste = {
-        ["+"] = "win32yank.exe -o --lf",
-        ["*"] = "win32yank.exe -o --lf",
-      },
-      cache_enabled = 0,
-    }
-  end
-end
+vim.cmd([[
+  if has("gui_running")
+    if g:os == "Windows"
+      let g:clipboard = {
+        \ "name": "win32yank-wsl",
+        \ "copy": {
+        \   "+": "win32yank.exe -i --crlf",
+        \   "*": "win32yank.exe -i --crlf",
+        \ },
+        \ "paste": {
+        \   "+": "win32yank.exe -o --lf",
+        \   "*": "win32yank.exe -o --lf",
+        \ },
+        \ "cache_enabled": 0,
+      \ }
+    endif
+  endif
+]])
 
 -- split windows
 opt.splitright = true -- split vertical window to the right
