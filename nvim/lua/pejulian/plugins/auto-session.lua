@@ -12,6 +12,7 @@ return {
 
     wk.register({
       w = {
+        name = "Workspace",
         r = { "<cmd>SessionRestore<CR>", "Restore session for cwd" }, -- restore last workspace session for current directory
         s = { "<cmd>SessionSave<CR>", "Save session for auto session root dir" }, -- save workspace session for current working directory
       },
