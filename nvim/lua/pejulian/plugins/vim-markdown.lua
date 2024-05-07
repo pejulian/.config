@@ -13,6 +13,8 @@ return {
       "json=json",
       "python=python",
       "yaml=yaml",
+      "markdown=markdown",
+      "txt=txt",
       "typescript=typescript",
       "vim=vim",
       "ts=typescript",
