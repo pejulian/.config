@@ -10,7 +10,7 @@ return {
       -- Actions in normal mode
       wk.register({
         h = {
-          name = "gitsigns",
+          name = "+gitsigns",
           s = { gs.stage_hunk, "Stage hunk" },
           r = { gs.reset_hunk, "Reset hunk" },
           S = { gs.stage_buffer, "Stage buffer" },

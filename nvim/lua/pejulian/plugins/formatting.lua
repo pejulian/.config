@@ -30,7 +30,7 @@ return {
     local wk = require("which-key")
     wk.register({
       m = {
-        name = "Code style",
+        name = "+code",
         p = {
           function()
             conform.format({

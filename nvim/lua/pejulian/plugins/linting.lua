@@ -26,7 +26,7 @@ return {
 
     wk.register({
       m = {
-        name = "Code style",
+        name = "+code",
         l = {
           function()
             lint.try_lint()

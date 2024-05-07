@@ -9,15 +9,21 @@ return {
     local wk = require("which-key")
 
     wk.register({
+      x = { name = "+trouble" },
+      g = {
+        name = "+git",
+        i = { name = "+git" },
+        c = { name = "+copilot" },
+      },
       s = {
-        name = "Splits",
+        name = "+splits",
         v = { "<C-w>v", "Split window vertically" },
         h = { "<C-w>s", "Split window horizontally" },
         e = { "<C-w>=", "Make splits equal size" },
         x = { "<cmd>close<CR>", "Close current split" },
       },
       t = {
-        name = "Tabs",
+        name = "+tabs",
         o = { "<cmd>tabnew<CR>", "Open new tab" },
         x = { "<cmd>tabclose<CR>", "Close current tab" },
         n = { "<cmd>tabn<CR>", "Go to next tab" },

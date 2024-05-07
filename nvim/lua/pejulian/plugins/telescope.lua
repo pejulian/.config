@@ -30,7 +30,7 @@ return {
     local wk = require("which-key")
     wk.register({
       f = {
-        name = "Telescope (find)",
+        name = "+telescope",
         f = { "<cmd>Telescope find_files<cr>", "Fuzzy find files in cwd" },
         r = { "<cmd>Telescope oldfiles<cr>", "Fuzzy find recent files" },
         s = { "<cmd>Telescope live_grep<cr>", "Find string in cwd" },

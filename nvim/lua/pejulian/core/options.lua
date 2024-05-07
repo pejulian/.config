@@ -98,3 +98,4 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- code folding
 opt.foldmethod = "indent"
+opt.foldlevel = 20

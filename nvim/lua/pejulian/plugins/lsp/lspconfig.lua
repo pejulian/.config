@@ -48,8 +48,12 @@ return {
         })
 
         wk.register({
-          c = {
-            a = { vim.lsp.buf.code_action, "See available code actions" },
+          l = {
+            name = "+lsp",
+            c = {
+              name = "+config",
+              a = { vim.lsp.buf.code_action, "See available code actions" },
+            },
           },
         }, {
           prefix = "<leader>",
@@ -59,15 +63,17 @@ return {
         })
 
         wk.register({
-          r = {
-            n = { vim.lsp.buf.rename, "Smart rename" },
+          l = {
+            name = "+lsp",
+            c = {
+              name = "+config",
+              r = { vim.lsp.buf.rename, "Smart rename" },
+              a = { vim.lsp.buf.code_action, "See available code actions" },
+              D = { "<cmd>Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics" },
+              d = { vim.diagnostic.open_float, "Show line diagnostics" },
+              s = { ":LspRestart<CR>", "Restart LSP" },
+            },
           },
-          c = {
-            a = { vim.lsp.buf.code_action, "See available code actions" },
-          },
-          D = { "<cmd>Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics" },
-          d = { vim.diagnostic.open_float, "Show line diagnostics" },
-          s = { ":LspRestart<CR>", "Restart LSP" },
         }, { mode = "n", prefix = "<leader>", buffer = ev.buf, silent = true })
       end,
     })

@@ -10,7 +10,7 @@ return {
   },
   keys = {
     {
-      "<leader>ccq",
+      "<leader>gcq",
       function()
         vim.ui.input({
           prompt = "Quick chat: ",
@@ -26,14 +26,14 @@ return {
       desc = "GitHub Copilot Chat - Quick Chat",
     },
     {
-      "<leader>cch",
+      "<leader>gch",
       function()
         require("CopilotChat.integrations.telescope").pick(require("CopilotChat.actions").help_actions())
       end,
       desc = "GitHub Copilot Chat - Prompt actions",
     },
     {
-      "<leader>ccp",
+      "<leader>gcp",
       function()
         require("CopilotChat.integrations.telescope").pick(require("CopilotChat.actions").prompt_actions())
       end,
