@@ -33,8 +33,6 @@ return {
         "tailwindcss",
         "svelte",
         "lua_ls",
-        "graphql",
-        "emmet_ls",
         "prismals",
         "pyright",
       },
@@ -48,6 +46,7 @@ return {
         "black", -- python formatter
         "pylint",
         "eslint_d",
+        "yamlfix", -- yaml formatter
       },
     })
   end,

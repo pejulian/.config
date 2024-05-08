@@ -16,20 +16,33 @@ return {
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-    local keymap = vim.keymap -- for conciseness
-
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
 
+        local function on_list(options)
+          vim.fn.setqflist({}, " ", {
+            title = options.title,
+            items = options.items,
+            context = options.context,
+          })
+
+          vim.api.nvim_command("cfirst")
+        end
+
         local wk = require("which-key")
         wk.register({
           g = {
             name = "LSP",
             R = { "<cmd>Telescope lsp_references<CR>", "Show LSP references" },
-            D = { vim.lsp.buf.declaration, "Go to declaration" },
+            D = {
+              function()
+                vim.lsp.buf.declaration({ on_list = on_list })
+              end,
+              "Go to declaration",
+            },
             d = { "<cmd>Telescope lsp_definitions<CR>", "Show LSP definitions" },
             i = { "<cmd>Telescope lsp_implementations<CR>", "Show LSP implementations" },
             t = { "<cmd>Telescope lsp_type_definitions<CR>", "Show LSP type definitions" },
@@ -94,20 +107,6 @@ return {
       function(server_name)
         lspconfig[server_name].setup({
           capabilities = capabilities,
-        })
-      end,
-      ["graphql"] = function()
-        -- configure graphql language server
-        lspconfig["graphql"].setup({
-          capabilities = capabilities,
-          filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-        })
-      end,
-      ["emmet_ls"] = function()
-        -- configure emmet language server
-        lspconfig["emmet_ls"].setup({
-          capabilities = capabilities,
-          filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
         })
       end,
       ["lua_ls"] = function()
