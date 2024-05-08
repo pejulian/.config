@@ -4,12 +4,16 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "nvim-telescope/telescope-live-grep-args.nvim",
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
   },
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
+
+    -- This loads the live grep args for telescope
+    telescope.load_extension("live_grep_args")
 
     telescope.setup({
       defaults = {

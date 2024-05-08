@@ -72,6 +72,10 @@ vim.cmd([[
   endif
 ]])
 
+-- set browser path from host (this is for markdown-preview)
+-- The shell that nvim is running on must export the variable CHROME_BROWSER
+vim.g.chrome_browser = os.getenv("CHROME_BROWSER")
+
 -- if in Windows is running, set clipboard to use win32yank
 vim.cmd([[
   if has("gui_running")
