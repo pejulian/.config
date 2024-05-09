@@ -11,6 +11,10 @@ return {
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
+    local open_with_trouble = require("trouble.sources.telescope").open
+
+    -- Use this to add more results without clearing the trouble list
+    -- local add_to_trouble = require("trouble.sources.telescope").add
 
     -- This loads the live grep args for telescope
     telescope.load_extension("live_grep_args")
@@ -23,6 +27,10 @@ return {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
             ["<C-j>"] = actions.move_selection_next, -- move to next result
             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<C-t>"] = open_with_trouble,
+          },
+          n = {
+            ["<C-t>"] = open_with_trouble,
           },
         },
       },
