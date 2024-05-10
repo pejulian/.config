@@ -99,3 +99,10 @@ vim.cmd([[
 -- split windows
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
+
+-- Native syntax highlighting for Jenkinsfile
+-- https://ls3.io/posts/jenkinsfile_vim_highlighting/
+api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "Jenkinsfile",
+  command = "setf groovy",
+})
