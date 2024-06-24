@@ -16,9 +16,6 @@ return {
     -- Use this to add more results without clearing the trouble list
     -- local add_to_trouble = require("trouble.sources.telescope").add
 
-    -- This loads the live grep args for telescope
-    telescope.load_extension("live_grep_args")
-
     telescope.setup({
       defaults = {
         path_display = { "smart" },
@@ -38,6 +35,9 @@ return {
 
     telescope.load_extension("fzf")
 
+    -- This loads the live grep args for telescope
+    telescope.load_extension("live_grep_args")
+
     -- set keymaps
     local wk = require("which-key")
     wk.register({
@@ -45,6 +45,12 @@ return {
         name = "+telescope",
         f = { "<cmd>Telescope find_files<cr>", "Fuzzy find files in cwd" },
         r = { "<cmd>Telescope oldfiles<cr>", "Fuzzy find recent files" },
+        g = {
+          function()
+            telescope.extensions.live_grep_args.live_grep_args()
+          end,
+          "Live grep with arguments",
+        },
         s = { "<cmd>Telescope live_grep<cr>", "Find string in cwd" },
         c = { "<cmd>Telescope grep_string<cr>", "Find string under cursor in cwd" },
         t = { "<cmd>TodoTelescope<cr>", "Find todos" },
