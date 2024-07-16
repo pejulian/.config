@@ -33,61 +33,43 @@ return {
         end
 
         local wk = require("which-key")
-        wk.register({
-          g = {
-            name = "LSP",
-            R = { "<cmd>Telescope lsp_references<CR>", "Show LSP references" },
-            D = {
-              function()
-                vim.lsp.buf.declaration({ on_list = on_list })
-              end,
-              "Go to declaration",
-            },
-            d = { "<cmd>Telescope lsp_definitions<CR>", "Show LSP definitions" },
-            i = { "<cmd>Telescope lsp_implementations<CR>", "Show LSP implementations" },
-            t = { "<cmd>Telescope lsp_type_definitions<CR>", "Show LSP type definitions" },
+
+        wk.add({
+          { "K", vim.lsp.buf.hover, desc = "Show documentation for what is under cursor" },
+          { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic" },
+          { "]d", vim.lsp.buf.goto_next, desc = "Go to next diagnostic" },
+          { "g", group = "LSP" },
+          {
+            "gD",
+            function()
+              vim.lsp.buf.declaration({ on_list = on_list })
+            end,
+            desc = "Go to declaration",
           },
-          ["["] = {
-            d = { vim.diagnostic.goto_prev, "Go to previous diagnostic" },
-          },
-          ["]"] = {
-            d = { vim.diagnostic.goto_next, "Go to next diagnostic" },
-          },
-          K = { vim.lsp.buf.hover, "Show documentation for what is under cursor" },
+          { "gR", "<cmd>Telescope lsp_references<CR>", desc = "Show LSP references" },
+          { "gd", "<cmd>Telescope lsp_definitions<CR>", desc = "Show LSP definitions" },
+          { "gi", "<cmd>Telescope lsp_implementations<CR>", desc = "Show LSP implementations" },
+          { "gt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "Show LSP type definitions" },
         }, {
-          mode = "n",
           buffer = ev.buf,
-          silent = true,
         })
 
-        wk.register({
-          l = {
-            name = "+lsp",
-            c = {
-              name = "+config",
-              a = { vim.lsp.buf.code_action, "See available code actions" },
-            },
+        wk.add({
+          { "<leader>l", group = "lsp" },
+          { "<leader>lc", group = "config" },
+          {
+            "<leader>lcD",
+            "<cmd>Telescope diagnostics bufnr=0<CR>",
+            desc = "Show buffer diagnostics",
           },
+          { "<leader>lca", vim.lsp.buf.code_action, desc = "See available code actions" },
+          { "<leader>lcd", vim.diagnostic.open_float, desc = "Show line diagnostics" },
+          { "<leader>lcr", vim.lsp.buf.rename, desc = "Smart rename" },
+          { "<leader>lcs", ":LspRestart<CR>", desc = "Restart LSP" },
         }, {
-          prefix = "<leader>",
-          mode = "v",
+          mode = { "n", "v" },
           buffer = ev.buf,
-          silent = true,
         })
-
-        wk.register({
-          l = {
-            name = "+lsp",
-            c = {
-              name = "+config",
-              r = { vim.lsp.buf.rename, "Smart rename" },
-              a = { vim.lsp.buf.code_action, "See available code actions" },
-              D = { "<cmd>Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics" },
-              d = { vim.diagnostic.open_float, "Show line diagnostics" },
-              s = { ":LspRestart<CR>", "Restart LSP" },
-            },
-          },
-        }, { mode = "n", prefix = "<leader>", buffer = ev.buf, silent = true })
       end,
     })
 

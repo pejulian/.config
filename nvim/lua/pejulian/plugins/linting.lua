@@ -37,16 +37,15 @@ return {
 
     local wk = require("which-key")
 
-    wk.register({
-      m = {
-        name = "+code",
-        l = {
-          function()
-            lint.try_lint()
-          end,
-          "Trigger linting for current file",
-        },
+    wk.add({
+      { "<leader>m", group = "code" },
+      {
+        "<leader>ml",
+        function()
+          lint.try_lint()
+        end,
+        desc = "Trigger linting for current file",
       },
-    }, { prefix = "<leader>" })
+    })
   end,
 }

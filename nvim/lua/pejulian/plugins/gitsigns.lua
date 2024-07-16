@@ -8,72 +8,62 @@ return {
       local wk = require("which-key")
 
       -- Actions in normal mode
-      wk.register({
-        h = {
-          name = "+gitsigns",
-          s = { gs.stage_hunk, "Stage hunk" },
-          r = { gs.reset_hunk, "Reset hunk" },
-          S = { gs.stage_buffer, "Stage buffer" },
-          R = { gs.reset_buffer, "Reset buffer" },
-          u = { gs.undo_stage_hunk, "Undo stage hunk" },
-          p = { gs.preview_hunk, "Preview hunk" },
-          b = {
-            function()
-              gs.blame_line({ full = true })
-            end,
-            "Blame line",
-          },
-          B = { gs.toggle_current_line_blame, "Toggle line blame" },
-          d = { gs.diffthis, "Diff this" },
-          D = {
-            function()
-              gs.diffthis("~")
-            end,
-            "Diff this ~",
-          },
+      wk.add({
+        { "<leader>[", gs.prev_hunk, buffer = bufnr, desc = "Previous hunk" },
+        { "<leader>]h", gs.next_hunk, buffer = bufnr, desc = "Next hunk" },
+        { "<leader>h", buffer = bufnr, group = "gitsigns" },
+        { "<leader>hB", gs.toggle_current_line_blame, buffer = bufnr, desc = "Toggle line blame" },
+        {
+          "<leader>hD",
+          function()
+            gs.diffthis("~")
+          end,
+          buffer = bufnr,
+          desc = "Diff this ~",
         },
-        ["]"] = {
-          h = { gs.next_hunk, "Next hunk" },
+        { "<leader>hR", gs.reset_buffer, buffer = bufnr, desc = "Reset buffer" },
+        { "<leader>hS", gs.stage_buffer, buffer = bufnr, desc = "Stage buffer" },
+        {
+          "<leader>hb",
+          function()
+            gs.blame_line({ full = true })
+          end,
+          buffer = bufnr,
+          desc = "Blame line",
         },
-        ["["] = {
-          gs.prev_hunk,
-          "Previous hunk",
-        },
-      }, {
-        prefix = "<leader>",
-        mode = "n",
-        buffer = bufnr,
+        { "<leader>hd", gs.diffthis, buffer = bufnr, desc = "Diff this" },
+        { "<leader>hp", gs.preview_hunk, buffer = bufnr, desc = "Preview hunk" },
+        { "<leader>hr", gs.reset_hunk, buffer = bufnr, desc = "Reset hunk" },
+        { "<leader>hs", gs.stage_hunk, buffer = bufnr, desc = "Stage hunk" },
+        { "<leader>hu", gs.undo_stage_hunk, buffer = bufnr, desc = "Undo stage hunk" },
       })
 
       -- Actions in visual mode
-      wk.register({
-        h = {
-          name = "gitsigns",
-          s = {
-            function()
-              gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-            end,
-            "Stage hunk",
-          },
-          r = {
-            function()
-              gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-            end,
-            "Reset hunk",
-          },
+      wk.add({
+        { "<leader>h", group = "gitsigns" },
+        {
+          "<leader>hr",
+          function()
+            gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+          end,
+          desc = "Reset hunk",
+        },
+        {
+          "<leader>hs",
+          function()
+            gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+          end,
+          desc = "Stage hunk",
         },
       }, {
-        prefix = "<leader>",
-        mode = "v",
         buffer = bufnr,
       })
 
-      local function map(mode, l, r, desc)
-        vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
-      end
-
-      -- Text object
-      map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns select hunk")
+      wk.add({
+        { "ih", ":<C-U>Gitsigns select_hunk<CR>", desc = "Gitsigns select hunk" },
+      }, {
+        mode = { "o", "x" },
+      })
     end,
   },
 }

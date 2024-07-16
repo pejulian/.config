@@ -10,12 +10,10 @@ return {
 
     local wk = require("which-key")
 
-    wk.register({
-      w = {
-        name = "+workspace",
-        r = { "<cmd>SessionRestore<CR>", "Restore session for cwd" }, -- restore last workspace session for current directory
-        s = { "<cmd>SessionSave<CR>", "Save session for auto session root dir" }, -- save workspace session for current working directory
-      },
-    }, { prefix = "<leader>" })
+    wk.add({
+      { "<leader>w", group = "workspace" },
+      { "<leader>wr", "<cmd>SessionRestore<CR>", desc = "Restore session for cwd" },
+      { "<leader>ws", "<cmd>SessionSave<CR>", desc = "Save session for auto session root dir" },
+    })
   end,
 }

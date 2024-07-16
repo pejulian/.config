@@ -28,23 +28,20 @@ return {
     })
 
     local wk = require("which-key")
-    wk.register({
-      m = {
-        name = "+code",
-        p = {
-          function()
-            conform.format({
-              lsp_fallback = true,
-              async = false,
-              timeout_ms = 1000,
-            })
-          end,
-          "Format file or range (in visual mode)",
-        },
+
+    wk.add({
+      { "<leader>m", group = "code" },
+      {
+        "<leader>mp",
+        function()
+          conform.format({
+            lsp_fallback = true,
+            async = false,
+            timeout_ms = 1000,
+          })
+        end,
+        desc = "Format file or range (in visual mode)",
       },
-    }, {
-      prefix = "<leader>",
-      mode = "n",
     })
   end,
 }

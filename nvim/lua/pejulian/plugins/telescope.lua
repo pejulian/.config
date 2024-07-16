@@ -40,23 +40,21 @@ return {
 
     -- set keymaps
     local wk = require("which-key")
-    wk.register({
-      f = {
-        name = "+telescope",
-        f = { "<cmd>Telescope find_files<cr>", "Fuzzy find files in cwd" },
-        r = { "<cmd>Telescope oldfiles<cr>", "Fuzzy find recent files" },
-        g = {
-          function()
-            telescope.extensions.live_grep_args.live_grep_args()
-          end,
-          "Live grep with arguments",
-        },
-        s = { "<cmd>Telescope live_grep<cr>", "Find string in cwd" },
-        c = { "<cmd>Telescope grep_string<cr>", "Find string under cursor in cwd" },
-        t = { "<cmd>TodoTelescope<cr>", "Find todos" },
+
+    wk.add({
+      { "<leader>f", group = "telescope" },
+      { "<leader>fc", "<cmd>Telescope grep_string<cr>", desc = "Find string under cursor in cwd" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Fuzzy find files in cwd" },
+      {
+        "<leader>fg",
+        function()
+          telescope.extensions.live_grep_args.live_grep_args()
+        end,
+        desc = "Live grep with arguments",
       },
-    }, {
-      prefix = "<leader>",
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Fuzzy find recent files" },
+      { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Find string in cwd" },
+      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find todos" },
     })
   end,
 }
