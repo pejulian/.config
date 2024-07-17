@@ -2,9 +2,9 @@
 
 - [Pre-requisites](#pre-requisites)
 
-I primarily use MacOS and WSL2 in Windows 10/11 for development.
+I use MacOS and WSL2 in Windows 10/11 for development.
 
-These configuration files are catered to the above 2 environments.
+These configuration files cater for the above OS/environments.
 
 > NOTE: `.zshrc` and other home folder configuration files are **NOT** included in this repo.
 
@@ -23,6 +23,7 @@ These configuration files are catered to the above 2 environments.
      - Install the font **in Windows**
      - Apply the font in Terminal (or your equivalent truecolor terminal)
 5. Install command line tools tools. I follow [this](https://www.youtube.com/watch?v=mmqDYw9C30I) or [this](https://bit.ly/49I5eqU&v=mmqDYw9C30I)
+   - `brew install wget`
    - `brew install git`
    - `brew install ghq` (I use this for cloning repos into self, and well organized, folder structures)
    - `brew install ripgrep`
@@ -33,3 +34,4 @@ These configuration files are catered to the above 2 environments.
    - `brew install tlrc`
 6. Install `asdf` for easy management of runtimes (`node`, `python`, `go`, `java`)
 7. If running in WSL2, it is also necessary to install Lazygit via `brew install lazygit`
+8. In WSL2, there might be an issue running certain plugins (such as the `prettierd` formatter in Mason) because the `$XDG_HOME_DIR` path is owned by the `root` user. To fix this, follow [this](https://github.com/microsoft/WSL/issues/10846#issuecomment-1840548054)
