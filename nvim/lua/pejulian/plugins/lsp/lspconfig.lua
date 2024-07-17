@@ -37,7 +37,7 @@ return {
         wk.add({
           { "K", vim.lsp.buf.hover, desc = "Show documentation for what is under cursor" },
           { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic" },
-          { "]d", vim.lsp.buf.goto_next, desc = "Go to next diagnostic" },
+          { "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic" },
           { "g", group = "LSP" },
           {
             "gD",
