@@ -1,6 +1,7 @@
 # Julian's dotfiles
 
 - [Pre-requisites](#pre-requisites)
+- [Recommendations](#recommendations)
 
 I use MacOS and WSL2 in Windows 10/11 for development.
 
@@ -25,13 +26,19 @@ These configuration files cater for the above OS/environments.
 5. Install command line tools tools. I follow [this](https://www.youtube.com/watch?v=mmqDYw9C30I) or [this](https://bit.ly/49I5eqU&v=mmqDYw9C30I)
    - `brew install wget`
    - `brew install git`
-   - `brew install ghq` (I use this for cloning repos into self, and well organized, folder structures)
-   - `brew install ripgrep`
-   - `brew install fzf`
-   - `brew install bat` (I go one step further and alias `cat` to `bat`, but you don't have to if you don't want to)
+   - `brew install ghq` [Repository management](https://github.com/x-motemen/ghq)
+   - `brew install ripgrep` [Better grep](https://github.com/BurntSushi/ripgrep/tree/master)
+   - `brew install fzf` [Command line fuzzy finder](https://github.com/junegunn/fzf)
+   - `brew install bat` [Better `cat`](https://github.com/sharkdp/bat)
    - `brew install git-delta`
-   - `brew install eza`
+   - `brew install eza` [Replacement for `ls`](https://github.com/eza-community/eza)
+   - `brew install exa` [Modern replacement for `ls`](https://github.com/ogham/exa)
    - `brew install tlrc`
-6. Install `asdf` for easy management of runtimes (`node`, `python`, `go`, `java`)
-7. If running in WSL2, it is also necessary to install Lazygit via `brew install lazygit`
-8. In WSL2, there might be an issue running certain plugins (such as the `prettierd` formatter in Mason) because the `$XDG_HOME_DIR` path is owned by the `root` user. To fix this, follow [this](https://github.com/microsoft/WSL/issues/10846#issuecomment-1840548054)
+   - `brew install lazygit` [Terminal UI for git](https://github.com/jesseduffield/lazygit)
+   - `brew install jq` (For manipulation of JSON strutures via CLI)
+   - `brew install peco` [Filtering tool](https://peco.github.io/)
+
+## Recommendations
+
+1. Install [asdf](https://asdf-vm.com/) for easy management of multiple runtimes (`node`, `python`, `go`, `java`)
+2. In WSL2, there might be an issue running certain plugins (such as the `prettierd` formatter in Mason) because the `$XDG_HOME_DIR` path is owned by the `root` user. To fix, follow [this](https://github.com/microsoft/WSL/issues/10846#issuecomment-1840548054) guide.
