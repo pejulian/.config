@@ -9,6 +9,10 @@ return {
       typescript = { "eslint_d", "eslint" },
       javascriptreact = { "eslint_d", "eslint" },
       typescriptreact = { "eslint_d", "eslint" },
+      css = { "stylelint" },
+      html = { "htmlhint" },
+      json = { "jsonlint" },
+      yaml = { "cfn-lint" },
       svelte = { "eslint_d", "eslint" },
       python = { "pylint" },
     }
