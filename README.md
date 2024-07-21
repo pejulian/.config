@@ -42,3 +42,13 @@ These configuration files cater for the above OS/environments.
 
 1. Install [asdf](https://asdf-vm.com/) for easy management of multiple runtimes (`node`, `python`, `go`, `java`)
 2. In WSL2, there might be an issue running certain plugins (such as the `prettierd` formatter in Mason) because the `$XDG_HOME_DIR` path is owned by the `root` user. To fix, follow [this](https://github.com/microsoft/WSL/issues/10846#issuecomment-1840548054) guide.
+
+## FAQ
+
+1. On WSL2, it was necessary to do some manual setup before `markdown-preview` could work.
+   - `asdf plugin-add yarn`
+   - `asdf install yarn latest`
+   - `asdf global yarn <LASTEST_VERSION>` (at the time of writing, it was 1.22.22)
+   - Open `neovim` and launch Lazy via `:Lazy`. Navigate to `markdown-preview`plugin and hit enter to view the installation path (`dir` properrty)
+   - `cd` into the installation path, `cd` to `app` and run `yarn install`
+   - Close and reopen `neovim` and try opening a markdown file. Now, the default browser should show up
