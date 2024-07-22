@@ -12,6 +12,8 @@ These configuration files cater for the above OS/environments.
 
 ## Pre-requisites
 
+> It is a good idea to get all pre-requisites below installed _before_ opening `neovim` for the first time.
+
 1. A terminal that supports truecolor (I use iTerm2 in MacOS and Terminal for Windows 10/11)
 2. Install [homebrew](https://brew.sh/) and ensure that it is on your path (e.g. `brew --version` outputs a valid homebrew version)
 3. Install neovim via `brew install neovim`
@@ -39,11 +41,15 @@ These configuration files cater for the above OS/environments.
    - `brew install lazygit` [Terminal UI for git](https://github.com/jesseduffield/lazygit)
    - `brew install jq` (For manipulation of JSON strutures via CLI)
    - `brew install peco` [Filtering tool](https://peco.github.io/)
+   - `brew install gcc@13` (In WSL2, I had to install this before `telescope-fzf-native.nvim` could build)
 
 ## Recommendations
 
-1. Install [asdf](https://asdf-vm.com/) for easy management of multiple runtimes (`node`, `python`, `go`, `java`)
-2. In WSL2, there might be an issue running certain plugins (such as the `prettierd` formatter in Mason) because the `$XDG_HOME_DIR` path is owned by the `root` user. To fix, follow [this](https://github.com/microsoft/WSL/issues/10846#issuecomment-1840548054) guide.
+1. On Windows (WS2), it is necessary to install Visual Studio Build Tools
+   - I use chocolatey on Windows, so I used [this](https://community.chocolatey.org/packages/visualstudio2022buildtools)
+   - I used the "Full installation" command just to ensure there are no problems with missing functionality
+2. Install [asdf](https://asdf-vm.com/) for easy management of multiple runtimes (`node`, `python`, `go`, `java`)
+3. In WSL2, there might be an issue running certain plugins (such as the `prettierd` formatter in Mason) because the `$XDG_HOME_DIR` path is owned by the `root` user. To fix, follow [this](https://github.com/microsoft/WSL/issues/10846#issuecomment-1840548054) guide.
 
 ## FAQ
 
