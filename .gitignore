@@ -1,4 +1,6 @@
-**/*
+*/*
+!tmux/tmux.conf
 !nvim/**
 !bat/**
 !README.md
+*/.DS_Store
