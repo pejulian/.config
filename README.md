@@ -46,7 +46,7 @@ These configuration files cater for the above OS/environments.
 ## Recommendations
 
 1. On Windows (WS2), it is necessary to install Visual Studio Build Tools
-   - I use chocolatey on Windows, so I used [this](https://community.chocolatey.org/packages/visualstudio2022buildtools)
+   - I use `chocolatey` on Windows, so I used [this](https://community.chocolatey.org/packages/visualstudio2022buildtools)
    - I used the "Full installation" command just to ensure there are no problems with missing functionality
 2. Install [asdf](https://asdf-vm.com/) for easy management of multiple runtimes (`node`, `python`, `go`, `java`)
 3. In WSL2, there might be an issue running certain plugins (such as the `prettierd` formatter in Mason) because the `$XDG_HOME_DIR` path is owned by the `root` user. To fix, follow [this](https://github.com/microsoft/WSL/issues/10846#issuecomment-1840548054) guide.

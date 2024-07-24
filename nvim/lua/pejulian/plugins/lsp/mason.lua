@@ -1,6 +1,7 @@
 return {
     "williamboman/mason.nvim",
     dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
@@ -8,7 +9,7 @@ return {
         -- import mason
         local mason = require("mason")
 
-        -- enable mason and configure icons
+        -- -- enable mason and configure icons
         mason.setup({
             ui = {
                 icons = {
@@ -26,7 +27,6 @@ return {
         mason_lspconfig.setup({
             -- list of servers for mason to install
             ensure_installed = {
-                "tsserver",
                 "html",
                 "cssls",
                 "tailwindcss",
@@ -47,6 +47,38 @@ return {
                 "eslint_d",
                 "yamlfix", -- yaml formatter
             },
+        })
+
+        local lspconfig = require("lspconfig")
+        local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+        -- used to enable autocompletion (assign to every lsp server config)
+        local capabilities = cmp_nvim_lsp.default_capabilities()
+
+        mason_lspconfig.setup_handlers({
+            -- default handler for installed servers
+            function(server_name)
+                lspconfig[server_name].setup({
+                    capabilities = capabilities,
+                })
+            end,
+            ["lua_ls"] = function()
+                -- configure lua server (with special settings)
+                lspconfig["lua_ls"].setup({
+                    capabilities = capabilities,
+                    settings = {
+                        Lua = {
+                            -- make the language server recognize "vim" global
+                            diagnostics = {
+                                globals = { "vim" },
+                            },
+                            completion = {
+                                callSnippet = "Replace",
+                            },
+                        },
+                    },
+                })
+            end,
         })
     end,
 }
