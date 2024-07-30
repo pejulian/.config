@@ -6,7 +6,11 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     config = function()
-        require("lspsaga").setup({})
+        require("lspsaga").setup({
+            diagnostic = {
+                on_insert = false,
+            },
+        })
 
         local wk = require("which-key")
 
