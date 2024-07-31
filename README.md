@@ -34,7 +34,7 @@ These configuration files cater for the above OS/environments.
    - `brew install fzf` [Command line fuzzy finder](https://github.com/junegunn/fzf)
    - `brew install bat` [Better `cat`](https://github.com/sharkdp/bat)
    - `brew install git-delta` [Better `git diff`](https://github.com/dandavison/delta)
-     You will need to set up `delta` in `~/.gitconfig`. Follow the instruction in the official repo linked above.
+     - You will need to set up `delta` in `~/.gitconfig`. Follow the instruction in the official repo linked above.
    - `brew install eza` [Replacement for `ls`](https://github.com/eza-community/eza)
    - `brew install exa` [Modern replacement for `ls`](https://github.com/ogham/exa)
    - `brew install tlrc`
@@ -42,7 +42,6 @@ These configuration files cater for the above OS/environments.
    - `brew install jq` (For manipulation of JSON strutures via CLI)
    - `brew install peco` [Filtering tool](https://peco.github.io/)
    - `brew install gcc@13` (In WSL2, I had to install this before `telescope-fzf-native.nvim` could build)
-   - `brew install win32yank` (In WSL2, we need this for clipboard functionality)
 
 ## Recommendations
 
@@ -51,6 +50,7 @@ These configuration files cater for the above OS/environments.
    - I used the "Full installation" command just to ensure there are no problems with missing functionality
 2. Install [asdf](https://asdf-vm.com/) for easy management of multiple runtimes (`node`, `python`, `go`, `java`)
 3. In WSL2, there might be an issue running certain plugins (such as the `prettierd` formatter in Mason) because the `$XDG_HOME_DIR` path is owned by the `root` user. To fix, follow [this](https://github.com/microsoft/WSL/issues/10846#issuecomment-1840548054) guide.
+4. For clipboard functionality to work in Windows (WSL2), it is necessary to install `win32yank`. I did so using Chocolatey (`choco install win32yank`)
 
 ## FAQ
 
