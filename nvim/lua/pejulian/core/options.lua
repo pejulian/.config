@@ -9,7 +9,7 @@ opt.title = true -- show title of file in window
 opt.titlelen = 0 -- do not shorten title
 opt.cmdheight = 1
 opt.showcmd = true
-opt.scrolloff = 10    -- use :h scrolloff to understand this more
+opt.scrolloff = 10 -- use :h scrolloff to understand this more
 opt.sidescrolloff = 5 -- use :h sidescrolloff to understand this more
 
 -- encodings
@@ -21,31 +21,31 @@ opt.fileencoding = "utf-8"
 -- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
 opt.autoread = true
 api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
-  command = "if mode() != 'c' | checktime | endif",
-  pattern = "*",
+    command = "if mode() != 'c' | checktime | endif",
+    pattern = "*",
 })
 
 -- Notification after file change
 -- https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
 api.nvim_create_autocmd({ "FileChangedShellPost" }, {
-  pattern = "*",
-  command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None",
+    pattern = "*",
+    command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None",
 })
 
 opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
-opt.tabstop = 4       -- 4 spaces for tabs (prettier default)
-opt.shiftwidth = 4    -- 4 spaces for indent width
-opt.expandtab = true  -- expand tab to spaces
+opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
+opt.shiftwidth = 4 -- 4 spaces for indent width
+opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
 opt.wrap = false
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true  -- if you include mixed case in your search, assumes you want case-sensitive
+opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 
 opt.cursorline = true
 
@@ -53,7 +53,7 @@ opt.cursorline = true
 -- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-opt.signcolumn = "yes"  -- show sign column so that text doesn't shift
+opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
@@ -71,10 +71,6 @@ vim.cmd([[
     endif
   endif
 ]])
-
--- set browser path from host (this is for markdown-preview)
--- The shell that nvim is running on must export the variable CHROME_BROWSER
-vim.g.chrome_browser = os.getenv("CHROME_BROWSER")
 
 -- if in Windows is running, set clipboard to use win32yank
 vim.cmd([[
@@ -103,6 +99,10 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- Native syntax highlighting for Jenkinsfile
 -- https://ls3.io/posts/jenkinsfile_vim_highlighting/
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "Jenkinsfile",
-  command = "setf groovy",
+    pattern = "Jenkinsfile",
+    command = "setf groovy",
 })
+
+-- set browser path from host (this is for markdown-preview)
+-- The shell that nvim is running on must export the variable CHROME_BROWSER
+vim.g.chrome_browser = os.getenv("CHROME_BROWSER")

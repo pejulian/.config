@@ -42,6 +42,7 @@ These configuration files cater for the above OS/environments.
    - `brew install jq` (For manipulation of JSON strutures via CLI)
    - `brew install peco` [Filtering tool](https://peco.github.io/)
    - `brew install gcc@13` (In WSL2, I had to install this before `telescope-fzf-native.nvim` could build)
+   - `brew install win32yank` (In WSL2, we need this for clipboard functionality)
 
 ## Recommendations
 
