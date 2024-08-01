@@ -44,7 +44,9 @@ return {
                 "isort", -- python formatter
                 "black", -- python formatter
                 "pylint",
+                "stylelint",
                 "eslint_d",
+                "cfn-lint", -- cloudformation linter
                 "yamlfix", -- yaml formatter
             },
         })
