@@ -32,6 +32,12 @@ api.nvim_create_autocmd({ "FileChangedShellPost" }, {
     command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None",
 })
 
+-- start insert mode in terminal
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*",
+    command = "if &buftype == 'terminal' | startinsert | endif",
+})
+
 opt.relativenumber = true
 opt.number = true
 
