@@ -17,17 +17,14 @@ return {
         -- local add_to_trouble = require("trouble.sources.telescope").add
 
         telescope.setup({
-            defaults = {
-                vimgrep_arguments = {
-                    "rg",
-                    "--color=always",
-                    "--no-heading",
-                    "--with-filename",
-                    "--line-number",
-                    "--column",
-                    "--smart-case",
-                    "--word-regexp",
+            extensions = {
+                fzf = {
+                    override_generic_sorter = false, -- override the generic sorter
+                    override_file_sorter = true, -- override the file sorter
+                    case_mode = "respect_case", -- or "ignore_case" or "respect_case"
                 },
+            },
+            defaults = {
                 path_display = { "smart" },
                 mappings = {
                     i = {
