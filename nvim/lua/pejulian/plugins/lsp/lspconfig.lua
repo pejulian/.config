@@ -78,27 +78,6 @@ return {
                     mode = { "n", "v" },
                     buffer = ev.buf,
                 })
-
-                wk.add({
-                    { "<leader>l", group = "lsp" },
-                    { "<leader>lt", group = "typescript-tools" },
-                    { "<leader>lto", ":TSToolsOrganizeImports<CR>", desc = "Sorts and removed unused imports" },
-                    { "<leader>ltf", ":TSToolsFixAll<CR>", desc = "Fixes all auto-fixable problems" },
-                    { "<leader>lts", ":TSToolsSortImports<CR>", desc = "Sorts imports" },
-                    { "<leader>ltr", ":TSToolsRemoveUnusedImports<CR>", desc = "Removes unused imports" },
-                    { "<leader>ltR", ":TSToolsRemoveUnused", desc = "Removes all unused statements" },
-                    { "<leader>lta", ":TSToolsAddMissingImports<CR>", desc = "Adds missing imports" },
-                    { "<leader>ltg", ":TSToolsGoToSourceDefinition<CR>", desc = "Goes to source definition" },
-                    { "<leader>ltn", ":TSToolsRenameFile<CR>", desc = "Rename file" },
-                    {
-                        "<leader>lte",
-                        "<cmd>TSToolsFileReferences<CR>",
-                        desc = "Find files that reference the current file",
-                    },
-                }, {
-                    mode = { "n", "v" },
-                    buffer = ev.buf,
-                })
             end,
         })
 

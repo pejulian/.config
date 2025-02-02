@@ -25,9 +25,6 @@ return {
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
         require("luasnip.loaders.from_vscode").lazy_load()
 
-        -- registers copilot chat integration with nvim-cmp
-        require("CopilotChat.integrations.cmp").setup()
-
         cmp.setup({
             completion = {
                 completeopt = "menu,menuone,preview,noselect",
