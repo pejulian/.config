@@ -32,11 +32,11 @@ These configuration files cater for the above OS/environments.
    - `brew install ghq` [Repository management](https://github.com/x-motemen/ghq)
    - `brew install ripgrep` [Better grep](https://github.com/BurntSushi/ripgrep/tree/master)
    - `brew install fzf` [Command line fuzzy finder](https://github.com/junegunn/fzf)
+   - `brew install fd` (Dependency for `fzf`)
    - `brew install bat` [Better `cat`](https://github.com/sharkdp/bat)
    - `brew install git-delta` [Better `git diff`](https://github.com/dandavison/delta)
      - You will need to set up `delta` in `~/.gitconfig`. Follow the instruction in the official repo linked above.
    - `brew install eza` [Replacement for `ls`](https://github.com/eza-community/eza)
-   - `brew install exa` [Modern replacement for `ls`](https://github.com/ogham/exa)
    - `brew install tlrc`
    - `brew install lazygit` [Terminal UI for git](https://github.com/jesseduffield/lazygit)
    - `brew install jq` (For manipulation of JSON strutures via CLI)

@@ -6,3 +6,4 @@ nvm/**
 !nvim/**
 !bat/**
 !README.md
+nvim/.DS_Store
