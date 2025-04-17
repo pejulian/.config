@@ -19,8 +19,7 @@ These configuration files cater for the above OS/environments.
 3. Install neovim via `brew install neovim`
 4. Install proper fonts
    - In MacOS
-     - `brew tap homebrew/cask-fonts`
-     - `brew install font-meslo-lg-nerd-font`
+     - `brew install --cask font-meslo-lg-nerd-font`
      - Apply the font in your terminal profile
    - In WSL
      - Manually [download](https://www.nerdfonts.com/font-downloads) your preferred font from [nerdfonts](https://www.nerdfonts.com/)
