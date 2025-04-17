@@ -61,9 +61,9 @@ These configuration files cater for the above OS/environments.
      export CHROME_BROWSER=~/.local/bin/chrome
      ```
      > Take note of the path to the Chrome browser. It might be different on your machine.
-   - `asdf plugin-add yarn`
+   - `asdf plugin add yarn`
    - `asdf install yarn latest`
-   - `asdf global yarn <LASTEST_VERSION>` (at the time of writing, it was 1.22.22)
+   - `asdf set -u yarn <LASTEST_VERSION>` (at the time of writing, it was 1.22.22)
    - Open `neovim` and launch Lazy via `:Lazy`. Navigate to `markdown-preview`plugin and hit enter to view the installation path (`dir` properrty)
    - `cd` into the installation path, `cd` to `app` and run `yarn install`
    - Close and reopen `neovim` and try opening a markdown file. Now, the default browser should show up
